@@ -1,0 +1,12 @@
+def hanoi(n, a, c, b):
+if n == 1:
+print(f"Перемістити диск 1 з {a} на {c}")
+else:
+hanoi(n - 1, a, b, c)
+print(f"Перемістити диск {n} з {a} на {c}")
+hanoi(n - 1, b, c, a)
+n = int(input())
+if 1 <= n < 6:
+hanoi(n, "A", "C", "B")
+else:
+print("Помилка")
