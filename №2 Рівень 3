@@ -1,0 +1,12 @@
+def stat(text):
+w = text.split()
+total = len(w)
+counts = {}
+for word in w:
+word = word.lower()
+counts[word] = counts.get(word, 0) + 1
+print(total)
+or word, count in counts.items():
+print(f"  '{word}': {count}")
+text_in = input()
+stat(text_in)
