@@ -1,0 +1,15 @@
+import random
+
+def f(a):
+b = a[:]
+b.sort()
+c = []
+for i, x in enumerate(a):
+if x != b[i]:
+c.append(x)
+return c
+n = int(input())
+nums = [random.random() for _ in range(n)]
+print(nums)
+changed = f(nums)
+print(changed)
