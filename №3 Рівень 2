@@ -1,0 +1,14 @@
+def reg(s):
+new_s = ""
+l = len(s)
+for i in range(l):
+c = s[i]
+if 'a' <= c <= 'z':
+new_s += c.upper()
+elif 'A' <= c <= 'Z':
+new_s += c.lower()
+else:
+new_s += c
+return new_s
+s = input()
+print(reg(s))
