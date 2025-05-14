@@ -1,0 +1,9 @@
+import math
+
+S = float(input(S))
+a = float(input(a))
+D = a**2 + 8*S
+h1 = (-a + math.sqrt(D)) / 2
+h2 = (-a - math.sqrt(D)) / 2
+h = h1 if h1 > 0 else h2
+print(f{round(h, 2)}")
