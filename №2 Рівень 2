@@ -1,0 +1,26 @@
+def m(s):
+try:
+n = list(map(int, s.split()))
+except ValueError:
+return None
+l = int(len(n) ** 0.5)
+if l * l != len(n):
+return None
+mat = [n[i:i + l] for i in range(0, len(n), l)]
+return mat
+def sym(mat):
+r = len(mat)
+c = len(mat[0])
+for row in mat:
+for i in range(c // 2):
+if row[i] != row[c - 1 - i]:
+return False
+return True
+s = input()
+matr = m(s)
+if matr:
+print(matr)
+if sym(matr):
+print("Симетрична!")
+else:
+print("Не симетрична.")
