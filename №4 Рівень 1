@@ -1,0 +1,123 @@
+import random
+
+class C:
+def __init__(self, n, h, a, d):
+self.n = n
+self.h = h
+self.ma = a
+self.md = d
+
+def ga(self):
+return random.randint(1, self.ma)
+
+def gd(self):
+return random.randint(0, self.md)
+
+def tu(self, u):
+self.h -= u
+if self.h < 0:
+self.h = 0
+print(f"{self.n} отримує {u} урону. Залишилось: {self.h}")
+
+def z(self):
+return self.h > 0
+
+def __str__(self):
+return f"{self.n} (Здоров'я: {self.h}, Атака: {self.ma}, Захист: {self.md})"
+
+class G(C):
+def __init__(self, n, h, a, d, t):
+super().__init__(n, h, a, d)
+self.t = t
+
+def vd(self):
+while True:
+d = input("Атакувати (а) чи захищатися (з)? ").lower()
+if d in ('а', 'з'):
+return d
+else:
+print("Некоректно. Введіть 'а' або 'з'.")
+
+class D(C):
+def __init__(self, h, a, d, t):
+super().__init__("Дракон", h, a, d)
+self.t = t
+
+def vd(self):
+return 'з' if random.randint(0, 1) == 0 else 'а'
+
+def b(g, d):
+r = 1
+while g.z() and d.z():
+print(f"\n--- Раунд {r} ---")
+r += 1
+
+dg = g.vd()
+dd = d.vd()
+
+ag = 0
+zg = 0
+ad = 0
+zd = 0
+
+if dg == 'а':
+ag = g.ga()
+print(f"{g.n} атакує з силою {ag}!")
+else:
+zg = g.gd()
+print(f"{g.n} захищається з силою {zg}!")
+
+if dd == 'а':
+ad = d.ga()
+print(f"Дракон атакує з силою {ad}!")
+else:
+zd = d.gd()
+print(f"Дракон захищається з силою {zd}!")
+
+if dg == 'а' and dd == 'а':
+if ag == ad:
+ug = ad // 2
+ud = ag // 2
+print("Співпадіння!")
+g.tu(ug)
+d.tu(ud)
+elif ag > ad:
+print("Атака героя сильніша!")
+d.tu(ag)
+else:
+print("Атака дракона сильніша!")
+g.tu(ad)
+
+elif dg == 'а' and dd == 'з':
+if ag > zd:
+ud = ag - zd
+print("Атака героя пробиває!")
+d.tu(ud)
+else:
+print("Атака героя відбита!")
+
+elif dg == 'з' and dd == 'а':
+if ad > zg:
+ug = ad - zg
+print("Атака дракона пробиває!")
+g.tu(ug)
+else:
+print("Атака дракона відбита!")
+else:
+print("Обидва захищаються. Нічого.")
+
+if g.z():
+print(f"\n{g.n} перемагає!")
+else:
+print("\nДракон перемагає!")
+
+ng = input()
+tg = input()
+hero = G(ng, h=150, a=30, d=20, t=tg)
+dragon = D(h=200, a=25, d=15, t="Вогняний")
+
+print("\n--- Початок ---")
+print(hero)
+print(dragon)
+
+b(hero, dragon)
