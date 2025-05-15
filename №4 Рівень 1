@@ -29,7 +29,6 @@ class G(C):
 def __init__(self, n, h, a, d, t):
 super().__init__(n, h, a, d)
 self.t = t
-
 def vd(self):
 while True:
 d = input("Атакувати (а) чи захищатися (з)? ").lower()
